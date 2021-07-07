@@ -11,5 +11,10 @@
         <module name="servlet.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hello.servlet" target="11" />
+      <module name="hello.servlet.main" target="11" />
+      <module name="hello.servlet.test" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
