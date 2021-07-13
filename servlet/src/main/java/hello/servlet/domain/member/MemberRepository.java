@@ -9,7 +9,7 @@ import java.util.Map;
  * 동시성 문제가 고려되어 있지 않음, 실무에서는 ConcurrentHashMap, AtomicLong 사용 고려
  */
 public class MemberRepository {
-    private static Map<Long, Member> store=new HashMap<>();
+    private static Map<Long, hello.servlet.domain.member.Member> store=new HashMap<>();
     private static long sequence=0L;
 
     //singleton으로 만들것임.
@@ -23,17 +23,17 @@ public class MemberRepository {
     private MemberRepository(){
     }
 
-    public Member save(Member member){
+    public hello.servlet.domain.member.Member save(hello.servlet.domain.member.Member member){
         member.setId((++sequence));
         store.put(member.getId(), member);
         return member;
     }
 
-    public Member findById(Long id){
+    public hello.servlet.domain.member.Member findById(Long id){
         return store.get(id);
     }
 
-    public List<Member> findAll(){
+    public List<hello.servlet.domain.member.Member> findAll(){
         return new ArrayList<>(store.values());
     }
 
