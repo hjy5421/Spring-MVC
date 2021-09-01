@@ -91,16 +91,16 @@ public class RequestParamController {
         return "ok";
     }
 
+    /*
+       @RequestParam String username, @RequestParam int age
+       HelloData helloData=new HelloData();
+       helloData.setUsername(username);
+       helloData.setAge(age);
+       == @ModelAttribute와 똑같이 동작
+        */
     @ResponseBody
     @RequestMapping("/model-attribute-v1")
     public String modelAttributeV1(@ModelAttribute HelloData helloData) {
-        /*
-        @RequestParam String username, @RequestParam int age
-        HelloData helloData=new HelloData();
-        helloData.setUsername(username);
-        helloData.setAge(age);
-        == @ModelAttribute와 똑같이 동작
-         */
         log.info("username={}, age={}", helloData.getUsername(), helloData.getAge());
         return "ok";
     }

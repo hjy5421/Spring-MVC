@@ -32,9 +32,6 @@ public class RequestBodyStringController {
     /**
      * InputStream(Reader) : HTTP 요청 메시지 바디의 내용을 직접 조회
      * OutputStream(Writer) : HTTP 응답 메시지 바디에 직접 결과 출력
-     * @param inputStream
-     * @param responseWriter
-     * @throws IOException
      */
     @PostMapping("/request-body-string-v2")
     public void requestBodyStringV2(InputStream inputStream, Writer responseWriter) throws IOException {
@@ -44,6 +41,16 @@ public class RequestBodyStringController {
         responseWriter.write("ok");
     }
 
+    /**
+     * HttpEntity : HTTP header, body 정보를 편리하게 조회
+     * - 메세지 바디 정보를 직접 조회
+     * - 요청 파라미터를 조회하는 기능(@RequestParam, @ModelAttribute)과 관계 X
+     * - HttpMessageConverter 사용 -> StringHttpMessageConverter 적용
+     *
+     * 응답에서도 HttpEntity 사용 가능
+     * - 메시지 바디 정보 직접 반환(view 조회 X)
+     * - HttpMessageConverter 사용 -> StringHttpMessageConverter 적용용     * @param httpEntity
+     */
     @PostMapping("/request-body-string-v3")
     public HttpEntity<String> requestBodyStringV3(HttpEntity<String> httpEntity) throws IOException {
         String messageBody = httpEntity.getBody();
@@ -52,6 +59,12 @@ public class RequestBodyStringController {
         return new HttpEntity<>("ok");
     }
 
+    /**
+     * @RequestBody
+     * - 메시지 바디 정보 직접 조회
+     * @ResponseBody
+     * - 메시지 바디 정보 직접 반환
+     */
     @ResponseBody
     @PostMapping("/request-body-string-v4")
     public String requestBodyStringV4(@RequestBody String messageBody) {

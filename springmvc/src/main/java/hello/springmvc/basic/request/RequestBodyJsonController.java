@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * content-type : application/json
+ */
 @Slf4j
 @Controller
 public class RequestBodyJsonController {
@@ -44,6 +47,9 @@ public class RequestBodyJsonController {
         return "ok";
     }
 
+    /**
+     * @RequestBody 생략 불가능(@ModelAttribute가 적용되어 버림)
+     */
     @ResponseBody
     @PostMapping("/request-body-json-v3")
     public String requestBodyJsonV3(@RequestBody HelloData data) {
